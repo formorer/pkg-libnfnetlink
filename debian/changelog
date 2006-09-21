@@ -1,11 +1,5 @@
-libnfnetlink (0.0.14) unstable; urgency=low
+libnfnetlink (0.0.16-1) unstable; urgency=low
 
-  * new upstream release
+  * initial debian release (Closes: #388613)
 
- -- Harald Welte <laforge@netfilter.org>  Sat, 07 Jan 2006 16:04:38 +0100
-
-libnfnetlink (0.0.13-0+pre2) unstable; urgency=low
-
-  * initial debian release
-
- -- Max Kellermann <max@duempel.org>  Sun, 27 Nov 2005 18:10:02 +0100
+ -- Max Kellermann <max@duempel.org>  Thu, 21 Sep 2006 18:04:29 +0200

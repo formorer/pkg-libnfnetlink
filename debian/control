@@ -1,23 +1,44 @@
 Source: libnfnetlink
 Section: libs
 Priority: optional
-Maintainer: Max Kellermann <max@duempel.org>
-Build-Depends: cdbs (>= 0.4), debhelper (>= 4.2), gcc (>= 3.4)
-Standards-Version: 3.6.2
+Maintainer: netfilter maintainers <netfilter-maintainers@ned.snow-crash.org>
+Uploaders: Max Kellermann <max@duempel.org>, Alexander Wirt <formorer@debian.org>
+Build-Depends: debhelper (>= 5)
+Standards-Version: 3.7.2
 
-Package: libnfnetlink0
+Package: libnfnetlink1
 Architecture: any
 Depends: ${shlibs:Depends}
 Description: Netfilter netlink library
- libnfnetlink is a lowlevel C library which helps accessing the
- netfilter netlink layer in the kernel.
+ libnfnetlink is the low-level library for netfilter related
+ kernel/userspace communication. It provides a generic messaging
+ infrastructure for in-kernel netfilter subsystems (such as
+ nfnetlink_log, nfnetlink_queue, nfnetlink_conntrack) and their
+ respective users and/or management tools in userspace.
+
+Package: libnfnetlink1-dbg
+Section: libdevel
+Architecture: any
+Depends: ${shlibs:Depends}, libnfnetlink1 (= ${Source-Version})
+Description: Debugging symbols for libnfnetlink1
+ libnfnetlink is the low-level library for netfilter related
+ kernel/userspace communication. It provides a generic messaging
+ infrastructure for in-kernel netfilter subsystems (such as
+ nfnetlink_log, nfnetlink_queue, nfnetlink_conntrack) and their
+ respective users and/or management tools in userspace.
+ .
+ This package provides the debugging symbols.
 
 Package: libnfnetlink-dev
-Architecture: any
 Section: libdevel
-Depends: libnfnetlink0 (= ${Source-Version})
-Description: Netfilter netlink library
- libnfnetlink is a lowlevel C library which helps accessing the
- netfilter netlink layer in the kernel.
+Architecture: any
+Depends: ${shlibs:Depends}, libnfnetlink1 (= ${Source-Version}),
+ pkg-config
+Description: Development files for libnfnetlink1
+ libnfnetlink is the low-level library for netfilter related
+ kernel/userspace communication. It provides a generic messaging
+ infrastructure for in-kernel netfilter subsystems (such as
+ nfnetlink_log, nfnetlink_queue, nfnetlink_conntrack) and their
+ respective users and/or management tools in userspace.
  .
- This package provides the development files.
+ This package provides development files and static libraries.
