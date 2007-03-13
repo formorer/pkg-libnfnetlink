@@ -143,8 +143,10 @@ target_os = @target_os@
 target_vendor = @target_vendor@
 
 # This is _NOT_ the library release version, it's an API version.
-# Please read Chapter 6 "Library interface versions" of the libtool documentation before making any modification
-LIBVERSION = 1:0:0
+# Please read Chapter 6 "Library interface versions" of the libtool
+# documentation before making any modification
+# http://sources.redhat.com/autobook/autobook/autobook_91.html
+LIBVERSION = 2:0:2
 
 INCLUDES = $(all_includes) -I$(top_srcdir)/include
 AM_CFLAGS = -fPIC -Wall
@@ -177,14 +179,15 @@ CCLD = $(CC)
 LINK = $(LIBTOOL) --mode=link $(CCLD) $(AM_CFLAGS) $(CFLAGS) \
 	$(AM_LDFLAGS) $(LDFLAGS) -o $@
 DIST_SOURCES = $(libnfnetlink_la_SOURCES)
-DIST_COMMON = $(srcdir)/Makefile.in Makefile.am
+DIST_COMMON = $(srcdir)/Makefile.in $(top_srcdir)/Make_global.am \
+	Makefile.am
 SOURCES = $(libnfnetlink_la_SOURCES)
 
 all: all-am
 
 .SUFFIXES:
 .SUFFIXES: .c .lo .o .obj
-$(srcdir)/Makefile.in:  Makefile.am  $(top_srcdir)/configure.in $(ACLOCAL_M4)
+$(srcdir)/Makefile.in:  Makefile.am $(top_srcdir)/Make_global.am $(top_srcdir)/configure.in $(ACLOCAL_M4)
 	cd $(top_srcdir) && \
 	  $(AUTOMAKE) --gnu  src/Makefile
 Makefile:  $(srcdir)/Makefile.in  $(top_builddir)/config.status
@@ -330,6 +333,7 @@ top_distdir = ..
 distdir = $(top_distdir)/$(PACKAGE)-$(VERSION)
 
 distdir: $(DISTFILES)
+	$(mkinstalldirs) $(distdir)/..
 	@srcdirstrip=`echo "$(srcdir)" | sed 's|.|.|g'`; \
 	topsrcdirstrip=`echo "$(top_srcdir)" | sed 's|.|.|g'`; \
 	list='$(DISTFILES)'; for file in $$list; do \

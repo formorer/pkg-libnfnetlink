@@ -1,3 +1,10 @@
+libnfnetlink (0.0.25-1) unstable; urgency=low
+
+  * new upstream release
+  * bumped soversion to 0
+
+ -- Max Kellermann <max@duempel.org>  Tue, 13 Mar 2007 08:17:32 +0100
+
 libnfnetlink (0.0.16-1) unstable; urgency=low
 
   * initial debian release (Closes: #388613)

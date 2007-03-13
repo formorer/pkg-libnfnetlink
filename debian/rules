@@ -73,16 +73,16 @@ binary-arch: build install
 	dh_testdir -a
 	dh_testroot -a
 	dh_installdocs -plibnfnetlink-dev
-	dh_installdocs -plibnfnetlink1
-	ln -sf libnfnetlink1 debian/libnfnetlink1-dbg/usr/share/doc/libnfnetlink1-dbg
-	dh_installchangelogs -plibnfnetlink1
+	dh_installdocs -plibnfnetlink0
+	ln -sf libnfnetlink0 debian/libnfnetlink0-dbg/usr/share/doc/libnfnetlink0-dbg
+	dh_installchangelogs -plibnfnetlink0
 	dh_installchangelogs -plibnfnetlink-dev
 	dh_install -a --sourcedir=debian/tmp
 	dh_link -a
-	dh_strip -a --dbg-package=libnfnetlink1-dbg
+	dh_strip -a --dbg-package=libnfnetlink0-dbg
 	dh_compress -a
 	dh_fixperms -a
-	dh_makeshlibs -a -V 'libnfnetlink1 (>= 0.0.16)'
+	dh_makeshlibs -a -V 'libnfnetlink0 (>= 0.0.25)'
 	dh_installdeb -a
 	dh_shlibdeps -a
 	dh_gencontrol -a

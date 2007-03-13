@@ -6,7 +6,7 @@ Uploaders: Max Kellermann <max@duempel.org>, Alexander Wirt <formorer@debian.org
 Build-Depends: debhelper (>= 5)
 Standards-Version: 3.7.2
 
-Package: libnfnetlink1
+Package: libnfnetlink0
 Architecture: any
 Depends: ${shlibs:Depends}
 Description: Netfilter netlink library
@@ -16,11 +16,11 @@ Description: Netfilter netlink library
  nfnetlink_log, nfnetlink_queue, nfnetlink_conntrack) and their
  respective users and/or management tools in userspace.
 
-Package: libnfnetlink1-dbg
+Package: libnfnetlink0-dbg
 Section: libdevel
 Architecture: any
-Depends: ${shlibs:Depends}, libnfnetlink1 (= ${Source-Version})
-Description: Debugging symbols for libnfnetlink1
+Depends: ${shlibs:Depends}, libnfnetlink0 (= ${Source-Version})
+Description: Debugging symbols for libnfnetlink0
  libnfnetlink is the low-level library for netfilter related
  kernel/userspace communication. It provides a generic messaging
  infrastructure for in-kernel netfilter subsystems (such as
@@ -32,9 +32,9 @@ Description: Debugging symbols for libnfnetlink1
 Package: libnfnetlink-dev
 Section: libdevel
 Architecture: any
-Depends: ${shlibs:Depends}, libnfnetlink1 (= ${Source-Version}),
+Depends: ${shlibs:Depends}, libnfnetlink0 (= ${Source-Version}),
  pkg-config
-Description: Development files for libnfnetlink1
+Description: Development files for libnfnetlink0
  libnfnetlink is the low-level library for netfilter related
  kernel/userspace communication. It provides a generic messaging
  infrastructure for in-kernel netfilter subsystems (such as
