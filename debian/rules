@@ -4,8 +4,6 @@
 # Uncomment this to turn on verbose mode.
 #export DH_VERBOSE=1
 
-export DH_COMPAT = 5
-
 DEB_HOST_GNU_TYPE ?= $(shell dpkg-architecture -qDEB_HOST_GNU_TYPE)
 DEB_BUILD_GNU_TYPE ?= $(shell dpkg-architecture -qDEB_BUILD_GNU_TYPE)
 
@@ -36,7 +34,7 @@ clean:
 	dh_testroot
 	rm -f build-stamp install*-stamp
 
-	-$(MAKE) distclean
+	[ ! -f Makefile ] || $(MAKE) distclean
 
 	dh_clean
 
@@ -82,7 +80,7 @@ binary-arch: build install
 	dh_strip -a --dbg-package=libnfnetlink0-dbg
 	dh_compress -a
 	dh_fixperms -a
-	dh_makeshlibs -a -V 'libnfnetlink0 (>= 0.0.25)'
+	dh_makeshlibs -a -V 'libnfnetlink0 (>= 0.0.30)'
 	dh_installdeb -a
 	dh_shlibdeps -a
 	dh_gencontrol -a

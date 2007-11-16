@@ -15,7 +15,6 @@
 #define aligned_u64 unsigned long long __attribute__((aligned(8)))
 #endif
 
-#include <linux/types.h>
 #include <sys/socket.h>	/* for sa_family_t */
 #include <linux/netlink.h>
 #include <libnfnetlink/linux_nfnetlink.h>
@@ -163,7 +162,7 @@ extern int nfnl_parse_attr(struct nfattr **, int, struct nfattr *, int);
 	nfnl_parse_attr((tb), (max), NFA_DATA((nfa)), NFA_PAYLOAD((nfa)))
 #define nfnl_nest(nlh, bufsize, type) 				\
 ({	struct nfattr *__start = NLMSG_TAIL(nlh);		\
-	nfnl_addattr_l(nlh, bufsize, (NFNL_NFA_NEST | type), NULL, 0); 	\
+	nfnl_addattr_l(nlh, bufsize, type, NULL, 0); 	\
 	__start; })
 #define nfnl_nest_end(nlh, tail) 				\
 ({	(tail)->nfa_len = (void *) NLMSG_TAIL(nlh) - (void *) tail; })
@@ -175,6 +174,25 @@ extern unsigned int nfnl_rcvbufsiz(struct nfnl_handle *h, unsigned int size);
 
 
 extern void nfnl_dump_packet(struct nlmsghdr *, int, char *);
+
+/*
+ * index to interface name API
+ */
+
+#ifndef IFNAMSIZ
+#define IFNAMSIZ 16
+#endif
+
+struct nlif_handle;
+
+struct nlif_handle *nlif_open(void);
+void nlif_close(struct nlif_handle *orig);
+int nlif_fd(struct nlif_handle *nlif_handle);
+int nlif_query(struct nlif_handle *nlif_handle);
+int nlif_catch(struct nlif_handle *nlif_handle);
+int nlif_index2name(struct nlif_handle *nlif_handle, 
+		    unsigned int index, 
+		    char *name);
 
 /* Pablo: What is the equivalence of be64_to_cpu in userspace?
  * 
