@@ -1,3 +1,12 @@
+libnfnetlink (0.0.33-1) unstable; urgency=low
+
+  [ Max Kellermann ]
+  * new upstream release
+  * priority changed to "extra"
+  * Standards-Version 3.7.3
+
+ -- Alexander Wirt <formorer@debian.org>  Fri, 21 Mar 2008 22:30:43 +0100
+
 libnfnetlink (0.0.30-2) unstable; urgency=low
 
   * Build depend on libtool (Closes: #451450) 

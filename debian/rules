@@ -15,8 +15,8 @@ else
   CFLAGS += -O2 -fno-strict-aliasing
 endif
 
-build: build-stamp
-build-stamp:
+build: debian/stamp-build
+debian/stamp-build:
 	dh_testdir
 
 	# ./configure
@@ -24,22 +24,22 @@ build-stamp:
 		--disable-dependency-tracking \
 		--prefix=/usr
 
-	# Build libnfnetlink
+	# Build it
 	$(MAKE)
 
-	touch build-stamp
+	touch $@
 
 clean:
 	dh_testdir
 	dh_testroot
-	rm -f build-stamp install*-stamp
+	rm -f debian/stamp-*
 
 	[ ! -f Makefile ] || $(MAKE) distclean
 
 	dh_clean
 
-install: install-stamp
-install-stamp: build-stamp
+install: debian/stamp-install
+debian/stamp-install: debian/stamp-build
 	dh_testdir
 	dh_testroot
 	dh_clean -k
@@ -47,7 +47,7 @@ install-stamp: build-stamp
 
 	$(MAKE) DESTDIR=`pwd`/debian/tmp install
 
-	touch install-stamp
+	touch $@
 
 # Build architecture-independent files here.
 binary-indep: build install
@@ -80,7 +80,7 @@ binary-arch: build install
 	dh_strip -a --dbg-package=libnfnetlink0-dbg
 	dh_compress -a
 	dh_fixperms -a
-	dh_makeshlibs -a -V 'libnfnetlink0 (>= 0.0.30)'
+	dh_makeshlibs -a -V 'libnfnetlink0 (>= 0.0.33)'
 	dh_installdeb -a
 	dh_shlibdeps -a
 	dh_gencontrol -a
