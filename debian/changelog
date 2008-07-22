@@ -1,3 +1,13 @@
+libnfnetlink (0.0.38-1) unstable; urgency=low
+
+  [ Max Kellermann ]
+  * new upstream release (Closes: #491884)
+
+  [ Alexander Wirt ]
+  * Bump standards version (No changes) 
+
+ -- Alexander Wirt <formorer@debian.org>  Tue, 22 Jul 2008 22:56:54 +0200
+
 libnfnetlink (0.0.33-1) unstable; urgency=low
 
   [ Max Kellermann ]

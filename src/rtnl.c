@@ -91,9 +91,10 @@ int rtnl_handler_unregister(struct rtnl_handle *rtnl_handle,
 	return 0;
 }
 
-/* rtnl_arse_rtattr - parse rtattr */
 int rtnl_parse_rtattr(struct rtattr *tb[], int max, struct rtattr *rta, int len)
 {
+	memset(tb, 0, sizeof(struct rtattr *) * max);
+
 	while (RTA_OK(rta, len)) {
 		if (rta->rta_type <= max)
 			tb[rta->rta_type] = rta;
@@ -195,7 +196,7 @@ int rtnl_receive(struct rtnl_handle *rtnl_handle)
 /* rtnl_open - constructor of rtnetlink module */
 struct rtnl_handle *rtnl_open(void)
 {
-	size_t addrlen;
+	socklen_t addrlen;
 	struct rtnl_handle *h;
 
 	h = calloc(1, sizeof(struct rtnl_handle));

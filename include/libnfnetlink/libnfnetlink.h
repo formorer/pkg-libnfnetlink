@@ -153,6 +153,10 @@ extern int nfnl_query(struct nfnl_handle *h, struct nlmsghdr *nlh);
 	 __ret;						\
 	 })
 
+#ifndef NLA_F_NESTED
+#define NLA_F_NESTED            (1 << 15)
+#endif
+
 /* nfnl attribute handling functions */
 extern int nfnl_addattr_l(struct nlmsghdr *, int, int, const void *, int);
 extern int nfnl_addattr16(struct nlmsghdr *, int, int, u_int16_t);
@@ -165,7 +169,7 @@ extern int nfnl_parse_attr(struct nfattr **, int, struct nfattr *, int);
 	nfnl_parse_attr((tb), (max), NFA_DATA((nfa)), NFA_PAYLOAD((nfa)))
 #define nfnl_nest(nlh, bufsize, type) 				\
 ({	struct nfattr *__start = NLMSG_TAIL(nlh);		\
-	nfnl_addattr_l(nlh, bufsize, type, NULL, 0); 	\
+	nfnl_addattr_l(nlh, bufsize, (NLA_F_NESTED | type), NULL, 0); 	\
 	__start; })
 #define nfnl_nest_end(nlh, tail) 				\
 ({	(tail)->nfa_len = (void *) NLMSG_TAIL(nlh) - (void *) tail; })
@@ -195,7 +199,7 @@ int nlif_fd(struct nlif_handle *nlif_handle);
 int nlif_query(struct nlif_handle *nlif_handle);
 int nlif_catch(struct nlif_handle *nlif_handle);
 int nlif_index2name(struct nlif_handle *nlif_handle, 
-		    unsigned int index, 
+		    unsigned int if_index, 
 		    char *name);
 
 /* Pablo: What is the equivalence of be64_to_cpu in userspace?
@@ -215,10 +219,14 @@ int nlif_index2name(struct nlif_handle *nlif_handle,
 
 #include <byteswap.h>
 #if __BYTE_ORDER == __BIG_ENDIAN
+#  ifndef __be64_to_cpu
 #  define __be64_to_cpu(x)	(x)
+#  endif
 # else
 # if __BYTE_ORDER == __LITTLE_ENDIAN
+#  ifndef __be64_to_cpu
 #  define __be64_to_cpu(x)	__bswap_64(x)
+#  endif
 # endif
 #endif
 
