@@ -1,3 +1,9 @@
+libnfnetlink (0.0.39-1) unstable; urgency=low
+
+  * New upstream release
+
+ -- Alexander Wirt <formorer@debian.org>  Tue, 22 Jul 2008 23:09:10 +0200
+
 libnfnetlink (0.0.38-1) unstable; urgency=low
 
   [ Max Kellermann ]
