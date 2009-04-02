@@ -4,7 +4,7 @@ Priority: extra
 Maintainer: netfilter maintainers <netfilter-maintainers@ned.snow-crash.org>
 Uploaders: Max Kellermann <max@duempel.org>, Alexander Wirt <formorer@debian.org>
 Build-Depends: debhelper (>= 5), libtool
-Standards-Version: 3.8.0
+Standards-Version: 3.8.1
 
 Package: libnfnetlink0
 Architecture: any
