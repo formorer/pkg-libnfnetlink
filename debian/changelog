@@ -1,3 +1,20 @@
+libnfnetlink (1.0.0-1~bpo50+1) lenny-backports; urgency=low
+
+  * Rebuild for lenny-backports.
+
+ -- Alexander Wirt <formorer@debian.org>  Thu, 17 Dec 2009 15:38:47 +0000
+
+libnfnetlink (1.0.0-1) unstable; urgency=low
+
+  [ Max Kellermann ]
+  * new upstream release (Closes: #545914)
+
+  [ Alexander Wirt ]
+  * Bump standards version (no changes)
+  * Move debug package to section debug
+
+ -- Alexander Wirt <formorer@debian.org>  Sun, 13 Sep 2009 21:43:53 +0200
+
 libnfnetlink (0.0.41-1) unstable; urgency=low
 
   [ Max Kellermann ]

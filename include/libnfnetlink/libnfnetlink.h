@@ -23,6 +23,18 @@
 #define NETLINK_NETFILTER 12
 #endif
 
+#ifndef SOL_NETLINK
+#define SOL_NETLINK	270
+#endif
+
+#ifndef NETLINK_BROADCAST_SEND_ERROR
+#define NETLINK_BROADCAST_SEND_ERROR 4
+#endif
+
+#ifndef NETLINK_NO_ENOBUFS
+#define NETLINK_NO_ENOBUFS 5
+#endif
+
 #define NLMSG_TAIL(nlh) \
 	(((void *) (nlh)) + NLMSG_ALIGN((nlh)->nlmsg_len))
 
@@ -50,6 +62,7 @@ struct nfnl_handle;
 struct nfnl_subsys_handle;
 
 extern int nfnl_fd(struct nfnl_handle *h);
+extern unsigned int nfnl_portid(const struct nfnl_handle *h);
 
 /* get a new library handle */
 extern struct nfnl_handle *nfnl_open(void);
@@ -167,6 +180,7 @@ extern int nfnl_query(struct nfnl_handle *h, struct nlmsghdr *nlh);
 
 /* nfnl attribute handling functions */
 extern int nfnl_addattr_l(struct nlmsghdr *, int, int, const void *, int);
+extern int nfnl_addattr8(struct nlmsghdr *, int, int, u_int8_t);
 extern int nfnl_addattr16(struct nlmsghdr *, int, int, u_int16_t);
 extern int nfnl_addattr32(struct nlmsghdr *, int, int, u_int32_t);
 extern int nfnl_nfa_addattr_l(struct nfattr *, int, int, const void *, int);
