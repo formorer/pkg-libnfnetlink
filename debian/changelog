@@ -1,3 +1,15 @@
+libnfnetlink (1.0.0-1.1) unstable; urgency=low
+
+  [ David Prevot ]
+  * Non-maintainer upload.
+  * iftable: fix incomplete list of interfaces via nlif_query. RTM_GETLINK
+    with NLM_F_DUMP returns a multi-part netlink message. The existing code
+    only handled the first message of it, thus, ignoring the remaining
+    interfaces. This causes a bug in conntrackd. Report 8b15e48 from upstream.
+    (Closes: #684863).
+
+ -- Christian Perrier <bubulle@debian.org>  Tue, 01 Jan 2013 19:19:15 +0100
+
 libnfnetlink (1.0.0-1) unstable; urgency=low
 
   [ Max Kellermann ]
