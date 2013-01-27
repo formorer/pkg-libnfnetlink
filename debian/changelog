@@ -1,3 +1,10 @@
+libnfnetlink (1.0.0-1.1+libtool) unreleased; urgency=low
+
+  * Use dh-autoreconf to update libtool at build time, in order to fix an x32
+    build failure.
+
+ -- Daniel Schepler <schepler@debian.org>  Sun, 27 Jan 2013 15:26:08 -0800
+
 libnfnetlink (1.0.0-1.1) unstable; urgency=low
 
   [ David Prevot ]
