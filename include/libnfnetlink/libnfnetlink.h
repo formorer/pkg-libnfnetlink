@@ -31,6 +31,10 @@
 
 #define NFNL_BUFFSIZE		8192
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 struct nfnlhdr {
 	struct nlmsghdr nlh;
 	struct nfgenmsg nfmsg;
@@ -56,6 +60,10 @@ extern struct nfnl_subsys_handle *nfnl_subsys_open(struct nfnl_handle *,
 						   unsigned int);
 extern void nfnl_subsys_close(struct nfnl_subsys_handle *);
 
+/* set and unset sequence tracking */
+void nfnl_set_sequence_tracking(struct nfnl_handle *h);
+void nfnl_unset_sequence_tracking(struct nfnl_handle *h);
+
 /* set receive buffer size (for nfnl_catch) */
 extern void nfnl_set_rcv_buffer_size(struct nfnl_handle *h, unsigned int size);
 
@@ -69,15 +77,15 @@ extern int nfnl_sendiov(const struct nfnl_handle *nfnlh,
 extern void nfnl_fill_hdr(struct nfnl_subsys_handle *, struct nlmsghdr *,
 			  unsigned int, u_int8_t, u_int16_t, u_int16_t,
 			  u_int16_t);
-extern int nfnl_talk(struct nfnl_handle *, struct nlmsghdr *, pid_t,
-                     unsigned, struct nlmsghdr *,
-                     int (*)(struct sockaddr_nl *, struct nlmsghdr *, void *),
-                     void *);
+extern __attribute__((deprecated)) int
+nfnl_talk(struct nfnl_handle *, struct nlmsghdr *, pid_t,
+          unsigned, struct nlmsghdr *,
+          int (*)(struct sockaddr_nl *, struct nlmsghdr *, void *), void *);
 
 /* simple challenge/response */
-extern int nfnl_listen(struct nfnl_handle *,
-                      int (*)(struct sockaddr_nl *, struct nlmsghdr *, void *),
-                      void *);
+extern __attribute__((deprecated)) int
+nfnl_listen(struct nfnl_handle *,
+            int (*)(struct sockaddr_nl *, struct nlmsghdr *, void *), void *);
 
 /* receiving */
 extern ssize_t nfnl_recv(const struct nfnl_handle *h, unsigned char *buf, size_t len);
@@ -201,6 +209,13 @@ int nlif_catch(struct nlif_handle *nlif_handle);
 int nlif_index2name(struct nlif_handle *nlif_handle, 
 		    unsigned int if_index, 
 		    char *name);
+int nlif_get_ifflags(const struct nlif_handle *h,
+		     unsigned int index,
+		     unsigned int *flags);
+
+#ifdef __cplusplus
+} /* extern "C" */
+#endif
 
 /* Pablo: What is the equivalence of be64_to_cpu in userspace?
  * 
