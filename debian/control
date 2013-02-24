@@ -1,8 +1,7 @@
 Source: libnfnetlink
 Section: libs
 Priority: extra
-Maintainer: netfilter maintainers <netfilter-maintainers@ned.snow-crash.org>
-Uploaders: Max Kellermann <max@duempel.org>, Alexander Wirt <formorer@debian.org>
+Maintainer: Alexander Wirt <formorer@debian.org>
 Build-Depends: debhelper (>= 9), libtool, dh-autoreconf
 Standards-Version: 3.9.4
 
