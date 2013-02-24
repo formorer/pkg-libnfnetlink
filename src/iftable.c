@@ -55,7 +55,7 @@ static int iftable_add(struct nlmsghdr *n, void *arg)
 	struct ifinfomsg *ifi_msg = NLMSG_DATA(n);
 	struct ifindex_node *this;
 	struct rtattr *cb[IFLA_MAX+1];
-	struct nlif_handle *h = (struct nlif_handle *)arg;
+	struct nlif_handle *h = arg;
 
 	if (n->nlmsg_type != RTM_NEWLINK)
 		return -1;
@@ -115,7 +115,7 @@ static int iftable_del(struct nlmsghdr *n, void *arg)
 {
 	struct ifinfomsg *ifi_msg = NLMSG_DATA(n);
 	struct rtattr *cb[IFLA_MAX+1];
-	struct nlif_handle *h = (struct nlif_handle *)arg;
+	struct nlif_handle *h = arg;
 	struct ifindex_node *this, *tmp;
 	unsigned int hash;
 
@@ -245,7 +245,7 @@ struct nlif_handle *nlif_open(void)
 	return h;
 
 err_unregister:
-	rtnl_handler_unregister(h->rtnl_handle, &h->ifdel_handler);
+	rtnl_handler_unregister(h->rtnl_handle, &h->ifadd_handler);
 err_close:
 	rtnl_close(h->rtnl_handle);
 	free(h);
