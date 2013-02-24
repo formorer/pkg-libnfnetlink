@@ -34,7 +34,7 @@ Package: libnfnetlink-dev
 Section: libdevel
 Architecture: any
 Depends: libnfnetlink0 (= ${binary:Version}),
-         ${misc:Depends}
+         ${misc:Depends},
  pkg-config,
          ${shlibs:Depends}
 Description: Development files for libnfnetlink0
