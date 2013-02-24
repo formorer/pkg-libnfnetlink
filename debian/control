@@ -9,6 +9,8 @@ Vcs-Browser: https://github.com/formorer/pkg-libnfnetlink
 
 Package: libnfnetlink0
 Architecture: any
+Multi-Arch: same
+Pre-Depends: ${misc:Pre-Depends}
 Depends: ${misc:Depends}, ${shlibs:Depends}
 Description: Netfilter netlink library
  libnfnetlink is the low-level library for netfilter related
@@ -34,8 +36,9 @@ Package: libnfnetlink-dev
 Section: libdevel
 Architecture: any
 Depends: libnfnetlink0 (= ${binary:Version}),
+         pkg-config,
          ${misc:Depends},
- pkg-config,
+         ${misc:Pre-Depends},
          ${shlibs:Depends}
 Description: Development files for libnfnetlink0
  libnfnetlink is the low-level library for netfilter related
