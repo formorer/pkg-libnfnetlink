@@ -2313,7 +2313,7 @@ fi
 
 # Define the identity of the package.
  PACKAGE=libnfnetlink
- VERSION=0.0.25
+ VERSION=0.0.30
 
 
 cat >>confdefs.h <<_ACEOF
@@ -19624,7 +19624,7 @@ esac
 
 
 
-ac_config_files="$ac_config_files Makefile src/Makefile include/Makefile include/libnfnetlink/Makefile libnfnetlink.pc"
+ac_config_files="$ac_config_files Makefile src/Makefile include/Makefile include/libnfnetlink/Makefile utils/Makefile libnfnetlink.pc"
 
 cat >confcache <<\_ACEOF
 # This file is a shell script that caches the results of configure
@@ -20216,6 +20216,7 @@ do
     "src/Makefile") CONFIG_FILES="$CONFIG_FILES src/Makefile" ;;
     "include/Makefile") CONFIG_FILES="$CONFIG_FILES include/Makefile" ;;
     "include/libnfnetlink/Makefile") CONFIG_FILES="$CONFIG_FILES include/libnfnetlink/Makefile" ;;
+    "utils/Makefile") CONFIG_FILES="$CONFIG_FILES utils/Makefile" ;;
     "libnfnetlink.pc") CONFIG_FILES="$CONFIG_FILES libnfnetlink.pc" ;;
 
   *) { { echo "$as_me:$LINENO: error: invalid argument: $ac_config_target" >&5
