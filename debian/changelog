@@ -1,3 +1,21 @@
+libnfnetlink (1.0.1-1) unstable; urgency=low
+
+  * [0ea816f] Imported Upstream version 1.0.1
+              (Closes: #699204)
+  * [ee23dbe] Bump standards version and debhelper version
+  * [674fed5] Move to 3.0 for getting bz2 support
+  * [8cc4c93] Update maintainer field
+  * [e9834ad] Update Vcs-* fields
+  * [d4b137c] Play nicer with git
+  * [63bbed0] Add misc depends
+  * [1ec36bf] wrap-and-sort
+  * [cab9e24] Add multiarch stuff
+  * [f3dc6bb] convert package to dh7
+  * [c54ff15] Bump dh compat to 9 (hardening)
+  * [edd28ca] Fix filepattern for package installation
+
+ -- Alexander Wirt <formorer@debian.org>  Sat, 18 May 2013 13:46:25 +0200
+
 libnfnetlink (1.0.0-1.1+libtool) unreleased; urgency=low
 
   * Use dh-autoreconf to update libtool at build time, in order to fix an x32
