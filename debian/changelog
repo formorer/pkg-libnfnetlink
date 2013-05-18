@@ -1,4 +1,4 @@
-libnfnetlink (1.0.1-1) unstable; urgency=low
+libnfnetlink (1.0.1-2) unstable; urgency=low
 
   * [0ea816f] Imported Upstream version 1.0.1
               (Closes: #699204)
