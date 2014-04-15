@@ -22,6 +22,7 @@ Description: Netfilter netlink library
 Package: libnfnetlink0-dbg
 Section: debug
 Architecture: any
+Pre-Depends: dpkg (>= 1.17.5)
 Depends: libnfnetlink0 (= ${binary:Version}), ${misc:Depends}, ${shlibs:Depends}
 Description: Debugging symbols for libnfnetlink0
  libnfnetlink is the low-level library for netfilter related
