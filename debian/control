@@ -1,6 +1,6 @@
 Source: libnfnetlink
 Section: libs
-Priority: extra
+Priority: optional
 Maintainer: Alexander Wirt <formorer@debian.org>
 Build-Depends: debhelper (>= 10~), dh-autoreconf, libtool
 Standards-Version: 3.9.4
