@@ -62,7 +62,7 @@ libnfnetlink (0.0.41-1) unstable; urgency=low
   * Priority "extra"
 
   [ Alexander Wirt ]
-  * bump standards version 
+  * bump standards version
 
  -- Alexander Wirt <formorer@debian.org>  Thu, 02 Apr 2009 10:18:29 +0200
 
@@ -78,7 +78,7 @@ libnfnetlink (0.0.38-1) unstable; urgency=low
   * new upstream release (Closes: #491884)
 
   [ Alexander Wirt ]
-  * Bump standards version (No changes) 
+  * Bump standards version (No changes)
 
  -- Alexander Wirt <formorer@debian.org>  Tue, 22 Jul 2008 22:56:54 +0200
 
@@ -93,7 +93,7 @@ libnfnetlink (0.0.33-1) unstable; urgency=low
 
 libnfnetlink (0.0.30-2) unstable; urgency=low
 
-  * Build depend on libtool (Closes: #451450) 
+  * Build depend on libtool (Closes: #451450)
 
  -- Alexander Wirt <formorer@debian.org>  Fri, 16 Nov 2007 08:50:07 +0100
 
