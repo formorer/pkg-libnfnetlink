@@ -13,4 +13,4 @@
 	dh $@ --with autoreconf
 
 override_dh_strip:
-	dh_strip --dbg-package=libnfnetlink0-dbg
+	dh_strip --dbgsym-migration='libnfnetlink0-dbg (<< 1.0.1-4~)'
