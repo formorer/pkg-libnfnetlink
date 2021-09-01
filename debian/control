@@ -41,6 +41,7 @@ Depends: libnfnetlink0 (= ${binary:Version}),
          ${misc:Depends},
          ${misc:Pre-Depends},
          ${shlibs:Depends}
+Multi-Arch: same
 Description: Development files for libnfnetlink0
  libnfnetlink is the low-level library for netfilter related
  kernel/userspace communication. It provides a generic messaging
